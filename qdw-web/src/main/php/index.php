@@ -1,7 +1,6 @@
 <?php
 	include("header.inc.php");
 ?>
-<script type="text/javascript" charset="utf-8" src="src/ui/minified/jquery.ui.progressbar.min.js"></script>
 <script type="text/javascript" charset="utf-8" src="src/jquery.jqplot.min.js"></script>
 <script type="text/javascript" charset="utf-8" src="src/plugins/jqplot.pieRenderer.min.js"></script>
 <script type="text/javascript" charset="utf-8" src="src/plugins/jqplot.categoryAxisRenderer.min.js"></script>
@@ -112,8 +111,6 @@ function validateDistributionForm() {
 					document.getElementById("attribute").disabled=false;
 					$( "#sliderbox" ).show().effect("blind", {'mode' : 'show'});
 					$( "#slider" ).slider( "option", "disabled", false );
-					updateHistory(x);
-				}
 				else {
 					document.getElementById("enter").disabled=false;
 					document.getElementById("attribute").disabled=false;
@@ -129,7 +126,6 @@ function validateDistributionForm() {
 $(document).ready(function() {
 	$( "#sliderbox" ).hide();
 	$('#thresholdTable').hide();
-	updateHistory();
 	$('#chartdiv').bind('jqplotDataClick',
 		function (ev, seriesIndex, pointIndex, data) {
 			if (data[0] == "No Data") {
