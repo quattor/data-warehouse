@@ -14,21 +14,12 @@
 <meta name="description" content="" />
 <link rel="stylesheet" type="text/css" title="Red" href="css/style_quattor.css" />
 <link rel="stylesheet" type="text/css" href="css/style.css" />
-<link rel="stylesheet" href="src/themes/ui-smoothness/css/smoothness/jquery-ui-1.8.23.custom.css" />
-<link rel="stylesheet" type="text/css" href="src/CookieCuttr/cookiecuttr.css" />
-<script type="text/javascript" charset="utf-8" src="src/js/jquery-1.7.2.min.js"></script>
-<script type="text/javascript" charset="utf-8" src="src/ui/minified/jquery.ui.core.min.js"></script>
-<script type="text/javascript" charset="utf-8" src="src/ui/minified/jquery.ui.widget.min.js"></script>
-<script type="text/javascript" charset="utf-8" src="src/ui/minified/jquery.ui.button.min.js"></script>
-<script type="text/javascript" charset="utf-8" src="src/ui/minified/jquery.ui.dialog.min.js"></script>
-<script type="text/javascript" charset="utf-8" src="src/ui/minified/jquery.ui.position.min.js"></script>
-<script type="text/javascript" charset="utf-8" src="src/ui/minified/jquery.ui.autocomplete.min.js"></script>
-<script type="text/javascript" charset="utf-8" src="src/ui/minified/jquery.ui.mouse.min.js"></script>
-<script type="text/javascript" charset="utf-8" src="src/ui/minified/jquery.ui.slider.min.js"></script>
-<script type="text/javascript" charset="utf-8" src="src/ui/minified/jquery.effects.core.min.js"></script>
-<script type="text/javascript" charset="utf-8" src="src/ui/minified/jquery.effects.blind.min.js"></script>
-<script type="text/javascript" charset="utf-8" src="src/external/jquery.cookie.js"></script>
-<script type="text/javascript" charset="utf-8" src="src/CookieCuttr/jquery.cookiecuttr.js"></script>
+<link rel="stylesheet" type="text/css" href="external/CookieCuttr/cookiecuttr.css" />
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.9.1/themes/base/jquery-ui.css" />
+<script type="text/javascript" charset="utf-8" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+<script type="text/javascript" charset="utf-8" src="http://code.jquery.com/ui/1.9.1/jquery-ui.js"></script>
+<script type="text/javascript" charset="utf-8" src="external/jquery.cookie.js"></script>
+<script type="text/javascript" charset="utf-8" src="external/CookieCuttr/jquery.cookiecuttr.js"></script>
 <script type="text/javascript" charset="utf-8" src="keylist.js"></script>
 
 </head>
