@@ -1,7 +1,7 @@
 Quattor Data Warehouse (qdw)
 ============================
 
-[![Build Status](http://jenkins1.ugent.be/job/Data_warehouse/badge/icon)](http://jenkins1.ugent.be/job/Data_warehouse/)
+[![Build Status](https://jenkins1.ugent.be/job/Data_warehouse/badge/icon)](http://jenkins1.ugent.be/job/Data_warehouse/)
 
 Description
 -----------
