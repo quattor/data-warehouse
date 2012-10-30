@@ -19,10 +19,10 @@ Installation
 ------------
 Along with the dependencies some settings in the elasticsearch.yml config file must be edited (eg./etc/elasticsearch/elasticsearch.yml)
 The contents of this file:
-	cluster.name: 'hostname of computer to ensure uniqueness'
-	node.master: true
-	node.data: true
-	http.max_content_length: 600mb
+    cluster.name: 'hostname of computer to ensure uniqueness'
+    node.master: true
+    node.data: true
+    http.max_content_length: 600mb
 
 First Time Setup
 ----------------
