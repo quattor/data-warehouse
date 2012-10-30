@@ -4,6 +4,7 @@ Quattor Data Warehouse (qdw)
 Description
 -----------
 Analyses the Quattor server profiles to provide information about them.
+
 Information is in the form of either a frequency distribution or as the results of a search.
 
 Settings
@@ -25,5 +26,6 @@ See man page or use --help
 
 Help
 ----
-If at any time the source of an error cannot be determinde it is best to just delete the entire contents of the profiles folder and reimport them.
+If at any time the source of an error cannot be determined it is best to just delete the entire contents of the profiles folder and reimport them.
+
 NB. This triggers a full re-index on next use, so will take some time.
