@@ -9,6 +9,7 @@ A collection of .json format quattor server profiles
 Dependencies
 ------------
 QDW has the following dependencies:
+
 *   Python Library: pyes
 *   Elastic Search
 *   Python and its Standard Libraries
@@ -18,7 +19,7 @@ QDW has the following dependencies:
 Installation
 ------------
 Along with the dependencies some settings in the elasticsearch.yml config file must be edited (eg./etc/elasticsearch/elasticsearch.yml)
-The contents of this file:
+
     cluster.name: 'hostname of computer to ensure uniqueness'
     node.master: true
     node.data: true
