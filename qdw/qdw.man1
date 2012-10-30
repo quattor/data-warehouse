@@ -1,0 +1,33 @@
+.TH QDW "1" "August 2012" "" "User Commands"
+.SH NAME
+Quattor Data Warehouse: Manual Page
+.SH DESCRIPTION
+usage: qdw.py [\fB\-h\fR] [\fB\-d\fR path | \fB\-f\fR path value] [\fB\-p\fR] [\fB\-n\fR]
+.PP
+Search for data from within the server profiles.
+The program treats the profiles as file systems therefore the path argument should reflect this. For example when producing a distribution of 'driver' the 'path' would be hardware/cards/nic/eth0/driver.
+.SS "optional arguments:"
+.TP
+\fB\-h\fR, \fB\-\-help\fR
+show this help message and exit
+.TP
+\fB\-d\fR path, \fB\-\-distributionofx\fR path
+Produces a frequency distribution of all the values
+within 'path' (as json formatted string if
+\fB\-\-prettyprint\fR not used)
+.TP
+\fB\-f\fR path value, \fB\-\-frequencyofx\fR path value
+Produces a list of machines, all of which have 'value'
+within 'path' (as json formatted string if
+\fB\-\-prettyprint\fR not used)
+.TP
+\fB\-p\fR, \fB\-\-prettyprint\fR
+Makes general outputs readable on the command line,
+not recommended for use as part of API
+.TP
+\fB\-n\fR, \fB\-\-noindex\fR
+Forces the program not to index any profiles, this
+will increase speed but may not yeild accurate
+results. (NB.is neccesary if profiles are not stored
+locally)
+.PP

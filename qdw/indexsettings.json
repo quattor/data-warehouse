@@ -1,0 +1,11 @@
+{
+  "settings":{
+    "analysis":{
+      "analyzer":{
+        "default":{
+          "type":"keyword"
+        }
+      }
+    }
+  }
+}
