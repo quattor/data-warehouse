@@ -1,0 +1,18 @@
+<assembly>
+  <id>bundle</id>
+  
+  <includeBaseDirectory>false</includeBaseDirectory>
+  
+  <formats>
+    <format>zip</format>
+    <format>tar.gz</format>
+  </formats>
+  
+  <fileSets>
+    <fileSet>
+      <directory>src/main/php</directory>
+      <outputDirectory>html/qdw</outputDirectory>
+    </fileSet>
+  </fileSets>
+
+</assembly>

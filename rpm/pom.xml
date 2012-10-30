@@ -1,0 +1,132 @@
+<?xml version="1.0"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <artifactId>qdw-rpm</artifactId>
+  <packaging>rpm</packaging>
+  <name>qdw-rpm</name>
+  <description>Quattor Data Warehouse (RPM)</description>
+
+  <parent>
+    <groupId>org.quattor.qdw</groupId>
+    <artifactId>qdw-parent</artifactId>
+    <version>0.9-SNAPSHOT</version>
+  </parent>
+
+  <dependencies>
+
+    <dependency>
+      <groupId>org.quattor.qdw</groupId>
+      <artifactId>qdw</artifactId>
+      <classifier>bundle</classifier>
+      <version>${project.version}</version>
+      <type>zip</type>
+    </dependency>
+
+    <dependency>
+      <groupId>org.quattor.qdw</groupId>
+      <artifactId>qdw-web</artifactId>
+      <classifier>bundle</classifier>
+      <version>${project.version}</version>
+      <type>zip</type>
+    </dependency>
+
+  </dependencies>
+
+  <build>
+
+    <plugins>
+
+      <plugin>
+        <artifactId>maven-dependency-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>copy-documentation</id>
+            <phase>prepare-package</phase>
+            <configuration>
+              <artifactItems>
+
+                <artifactItem>
+                  <groupId>org.quattor.qdw</groupId>
+                  <artifactId>qdw</artifactId>
+                  <classifier>bundle</classifier>
+                  <type>zip</type>
+                  <outputDirectory>${project.build.directory}/qdw</outputDirectory>
+                </artifactItem>
+
+                <artifactItem>
+                  <groupId>org.quattor.qdw</groupId>
+                  <artifactId>qdw-web</artifactId>
+                  <classifier>bundle</classifier>
+                  <type>zip</type>
+                  <outputDirectory>${project.build.directory}/qdw-web</outputDirectory>
+                </artifactItem>
+
+              </artifactItems>
+            </configuration>
+            <goals>
+              <goal>unpack</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>rpm-maven-plugin</artifactId>
+        <extensions>true</extensions>
+        <configuration>
+          <release>${RELEASE}</release>
+          <summary>Quattor Data Warehouse</summary>
+          <name>quattor-data-warehouse</name>
+          <group>System</group>
+          <vendor>Quattor</vendor>
+          <packager>Quattor</packager>
+          <copyright>Apache</copyright>
+          <url>http://quattor.org/</url>
+          <needarch>noarch</needarch>
+          <description>
+            Packaging of Quattor Data Warehouse
+          </description>
+          <!--
+          <requires>
+            <require>stratuslab-pdisk-host</require>
+          </requires>
+          -->
+          <mappings>
+
+            <mapping>
+              <directory>/usr/share/qdw</directory>
+              <filemode>644</filemode>
+              <username>root</username>
+              <groupname>root</groupname>
+              <directoryIncluded>false</directoryIncluded>
+              <sources>
+                <source>
+                  <location>target/qdw</location>
+                </source>
+              </sources>
+            </mapping>
+
+            <mapping>
+              <directory>/usr/share/qdw-web</directory>
+              <filemode>644</filemode>
+              <username>root</username>
+              <groupname>root</groupname>
+              <directoryIncluded>false</directoryIncluded>
+              <sources>
+                <source>
+                  <location>target/qdw-web</location>
+                </source>
+              </sources>
+            </mapping>
+
+          </mappings>
+        </configuration>
+      </plugin>
+
+    </plugins>
+
+  </build>
+
+</project>
