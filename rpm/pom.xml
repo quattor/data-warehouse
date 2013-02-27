@@ -88,7 +88,7 @@
           <description>
             Packaging of Quattor Data Warehouse
           </description>
-          <!--
+
           <requires>
             <require>pyes</require>
 	    <require>python-ordereddict</require>
@@ -100,14 +100,41 @@
           <mappings>
 
             <mapping>
-              <directory>/usr/share/qdw</directory>
+              <directory>/usr/bin</directory>
               <filemode>644</filemode>
               <username>root</username>
               <groupname>root</groupname>
               <directoryIncluded>false</directoryIncluded>
               <sources>
                 <source>
-                  <location>target/qdw</location>
+                  <location>target/qdw/bin</location>
+                </source>
+              </sources>
+            </mapping>
+
+            <mapping>
+              <directory>/etc</directory>
+              <filemode>644</filemode>
+              <username>root</username>
+              <groupname>root</groupname>
+              <directoryIncluded>false</directoryIncluded>
+              <sources>
+                <source>
+                  <location>target/qdw/etc</location>
+                </source>
+              </sources>
+            </mapping>
+
+
+            <mapping>
+              <directory>/usr/share</directory>
+              <filemode>644</filemode>
+              <username>root</username>
+              <groupname>root</groupname>
+              <directoryIncluded>false</directoryIncluded>
+              <sources>
+                <source>
+                  <location>target/qdw/share</location>
                 </source>
               </sources>
             </mapping>
