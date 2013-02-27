@@ -90,9 +90,13 @@
           </description>
           <!--
           <requires>
-            <require>stratuslab-pdisk-host</require>
+            <require>pyes</require>
+	    <require>python-ordereddict</require>
+	    <require>python-argparse</require>
+	    <require>curl</require>
+	    <require>php</require>
           </requires>
-          -->
+
           <mappings>
 
             <mapping>
