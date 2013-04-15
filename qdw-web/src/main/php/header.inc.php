@@ -1,11 +1,4 @@
 <!DOCTYPE html>
-<!--
-
-    Nonzero1.0 by nodethirtythree design
-    http://www.nodethirtythree.com
-    missing in a maze
-
--->
 <html>
 <head>
     <meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />
@@ -19,13 +12,36 @@
     <script type="text/javascript" charset="utf-8" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
     <script type="text/javascript" charset="utf-8" src="http://code.jquery.com/ui/1.9.1/jquery-ui.js"></script>
     <script type="text/javascript" charset="utf-8" src="keylist.js"></script>
+    <style type="text/css">
+		body {
+			padding-top: 60px;
+			padding-bottom: 40px;
+		}
+  </style>
+  <link rel="publisher" href="https://plus.google.com/106108753304191902209" />
+  <link rel="icon" href="images/favicon.ico"/>
 </head>
 <body>
-<div id="header">
-    <div id="header_inner" class="fixed">
-        <div id="logo">
-            <a href="http://quattor.sourceforge.net/"><img src="images/quattorlogo.png" alt="quattor" title="Quattor logo"/></a>
-        </div>
+	        
+<div class="navbar navbar-inverse navbar-fixed-top">
+  <div class="navbar-inner">
+	<div class="container">
+		<a class="brand" href="http://quattor.org/index.html">
+			<img src="images/quattor_logo_navbar.png" width="150" height="36" alt="quattor logo"/>
+		</a>
+	  </button>
+	  <div class="nav-collapse collapse">
+		<ul class="nav">
+		  <li class="active"><a href="#">Home</a></li>
+		  <li><a href="#about">About</a></li>
+		</ul>
+		  </li>
+		</ul>
+	   </div>
+	</div>
+  </div>
+</div>
+        
 <?php
     $page = (explode("/", $_SERVER['REQUEST_URI']));
     $page = (explode("?", $page[2]));
