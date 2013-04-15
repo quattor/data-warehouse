@@ -1,10 +1,10 @@
 <?php
 	include("header.inc.php");
 ?>
-<script type="text/javascript" charset="utf-8" src="src/jquery.jqplot.min.js"></script>
-<script type="text/javascript" charset="utf-8" src="src/plugins/jqplot.pieRenderer.min.js"></script>
-<script type="text/javascript" charset="utf-8" src="src/plugins/jqplot.categoryAxisRenderer.min.js"></script>
-<link rel="stylesheet" type="text/css" href="src/jquery.jqplot.min.css" />
+<script type="text/javascript" charset="utf-8" src="js/jquery.jqplot.min.js"></script>
+<script type="text/javascript" charset="utf-8" src="js/jqplot.pieRenderer.min.js"></script>
+<script type="text/javascript" charset="utf-8" src="js/jqplot.categoryAxisRenderer.min.js"></script>
+<link rel="stylesheet" type="text/css" href="css/jquery.jqplot.min.css" />
 <link rel="stylesheet" type="text/css" href="css/styleforpiechart.css" />
 
 <script type="text/javascript">
@@ -35,7 +35,6 @@ function drawPiechart() {
 		abovethreshold.push(["Below Threshold", other]);
 	}
 	document.belowthreshold = belowthreshold;
-
 	document.plot1 = jQuery.jqplot ('chartdiv', [abovethreshold], {
 		grid: {
 		    drawBorder: false,
@@ -121,7 +120,6 @@ function validateDistributionForm() {
 		);	          
     }
 }
-
 
 $(document).ready(function() {
 	$( "#sliderbox" ).hide();
