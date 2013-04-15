@@ -5,7 +5,7 @@
     <title>Machine Profiles Search Directory</title>
     <meta name="keywords" content="" />
     <meta name="description" content="" />
-    <link rel="stylesheet" type="text/css" title="Red" href="bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css" />
     <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap-responsive.min.css" />
     <link rel="stylesheet" href="bootstrap/css/pygments.css" />
     <script type="text/javascript" charset="utf-8" src="bootstrap/js/bootstrap.min.js"></script>
