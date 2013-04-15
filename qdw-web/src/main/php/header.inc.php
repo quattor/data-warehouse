@@ -27,32 +27,21 @@
   <div class="navbar-inner">
 	<div class="container">
 		<a class="brand" href="http://quattor.org/index.html">
-			<img src="images/quattor_logo_navbar.png" width="150" height="36" alt="quattor logo"/>
+			<img src="images/quattor_logo_navbar.png" alt="quattor logo"/>
 		</a>
-	  </button>
 	  <div class="nav-collapse collapse">
 		<ul class="nav">
-		  <li class="active"><a href="index.php">Distribution</a></li>
-		  <li><a href="ServerAttribute.php">Server Attribute</a></li>
+			<?php
+			    $currentFile = $_SERVER["PHP_SELF"];
+                $parts = Explode('/', $currentFile);
+                $page = $parts[count($parts) - 1];
+			?>
+		  <li<?php if ($page == "index.php") { echo ' class="active"'; } ?>><a href="index.php">Distribution</a></li>
+		  <li<?php if ($page == "ServerAttribute.php") { echo ' class="active"'; } ?>><a href="ServerAttribute.php">Server Attribute</a></li>
 		</ul>
 	   </div>
 	</div>
   </div>
-</div>
-        
-
-<div id="menu">
-	<ul>    
-		<?php
-			foreach ($tabs as $u => $t) {
-				$class = "";
-				if ($page == $u) {
-					$class = "active";
-				}
-				echo "<li><a class=\"$class\" href=\"$u\">$t</a></li>\n";
-			}
-		?>
-	</ul>
 </div>
 
 <script>

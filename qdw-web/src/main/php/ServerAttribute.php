@@ -6,19 +6,21 @@
 
 <div class="container">
 	<div class="row-fluid">
-		<div class="hero-unit page-header">
-			<div class="serverAttribute">
-			    <form name="Search">
-			        <div>   
-			            <label for="attribute">Attribute</label>
-			            <input type="text" name="attribute" id="attribute" onkeydown="if (event.keyCode == 13) getData()" value="<?php echo $_GET["attribute"] ?>"/>
-			        </div>
-			        <div>
-			            <label for="value">Value</label>
-			            <input type="text" name="value" id="value" onkeydown="if (event.keyCode == 13) getData()" value="<?php echo $_GET["value"] ?>"/>
-			        </div>
-			        <input class="buttontheme" type="button" id="Search" value="Quattorise" onclick="getData()"/><br><br>
-			    </form>
+		<div class="span12">
+		  <div class="hero-unit page-header">
+				<div class="serverAttribute">
+				    <form name="Search">
+				        <div>   
+				            <label for="attribute">Attribute</label>
+				            <input type="text" name="attribute" id="attribute" onkeydown="if (event.keyCode == 13) getData()" value="<?php echo $_GET["attribute"] ?>"/>
+				        </div>
+				        <div>
+				            <label for="value">Value</label>
+				            <input type="text" name="value" id="value" onkeydown="if (event.keyCode == 13) getData()" value="<?php echo $_GET["value"] ?>"/>
+				        </div>
+				        <input class="btn" type="button" id="Search" value="Quattorise" onclick="getData()"/><br><br>
+				    </form>
+				</div>
 			</div>
 		</div>
 	</div>

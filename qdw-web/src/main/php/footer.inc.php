@@ -3,9 +3,9 @@
         <br class="clear" />
     </div>
 </div>
-
-<div id="footer" class="fixed">
-	Copyright &copy; 2011-2013 quattor.org
+<hr />
+<div class="footer container" >
+	<p class="muted credit">Copyright &copy; 2011-2013 quattor.org</p>
 </div>
 
 </body>
