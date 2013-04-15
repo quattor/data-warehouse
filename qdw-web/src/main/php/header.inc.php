@@ -32,42 +32,27 @@
 	  </button>
 	  <div class="nav-collapse collapse">
 		<ul class="nav">
-		  <li class="active"><a href="#">Home</a></li>
-		  <li><a href="#about">About</a></li>
-		</ul>
-		  </li>
+		  <li class="active"><a href="index.php">Distribution</a></li>
+		  <li><a href="ServerAttribute.php">Server Attribute</a></li>
 		</ul>
 	   </div>
 	</div>
   </div>
 </div>
         
-<?php
-    $page = (explode("/", $_SERVER['REQUEST_URI']));
-    $page = (explode("?", $page[2]));
-    $page = $page[0];
-    if($page == "") {
-        $page = ".";
-    }
-    $tabs = Array(
-        "." => "Distribution",
-        "ServerAttribute.php" => "Server Attribute"
-    );
-?>
-        <div id="menu">
-            <ul>    
-                <?php
-                    foreach ($tabs as $u => $t) {
-                        $class = "";
-                        if ($page == $u) {
-                            $class = "active";
-                        }
-                        echo "<li><a class=\"$class\" href=\"$u\">$t</a></li>\n";
-                    }
-                ?>
-            </ul>
-        </div>
-    </div>
+
+<div id="menu">
+	<ul>    
+		<?php
+			foreach ($tabs as $u => $t) {
+				$class = "";
+				if ($page == $u) {
+					$class = "active";
+				}
+				echo "<li><a class=\"$class\" href=\"$u\">$t</a></li>\n";
+			}
+		?>
+	</ul>
 </div>
 
 <script>
