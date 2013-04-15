@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />
-    <title>Machine Profiles Search Directory</title>
+    <title>Quattor | Data Warehouse</title>
     <meta name="keywords" content="" />
     <meta name="description" content="" />
     <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css" />
