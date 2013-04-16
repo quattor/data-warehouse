@@ -10,7 +10,7 @@
             $attribute = preg_replace("/[^A-Za-z0-9\/-_]/","",$_REQUEST["attribute"]);
             $value = preg_replace("/[^A-Za-z0-9\s_\-\(\)\.:\/=,@]/","",$_REQUEST["value"]);
             $value = "'$value'";
-            chdir('qdwprogram');
+            chdir('/var/www/data-warehouse/qdw/src/main/python/');
             $results = exec('./qdw.py -n -f '.$attribute.' '.$value);
             $results = json_decode($results);
             $results = array_map("arrayify", $results);
