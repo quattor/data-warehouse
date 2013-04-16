@@ -23,7 +23,7 @@ log_handler.setFormatter(logging.Formatter("%(levelname)8s: %(message)s"))
 logger.addHandler(log_handler)
 
 config = ConfigParser.ConfigParser()
-config.read('dw.conf')
+config.read('../etc/dw.conf')
 
 logger.debug("qdw: read config %s" % (config))
 
@@ -40,7 +40,7 @@ if args.debug:
     logger.setLevel(logging.DEBUG)
 
 if not(args.noindex):
-    if not os.path.isdir('Profiles/.git'):
+    if not os.path.isdir('../Profiles/.git'):
         logger.debug("qdw: Initialising index and populating git repo")
         dwfuncts.indexinstall(logger, server) #inits index and populates
     else:
