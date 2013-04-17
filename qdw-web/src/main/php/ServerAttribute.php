@@ -38,7 +38,6 @@
 					
 					//Pops open the info box for a specific node
 					var nodewin = null;
-
 					function node(n) {
 					  nodewin = window.open(INFO_URL+n, "node", "width=640,height=480,left=128,top=128,resizable=yes,scrollbars=yes,directories=no,titlebar=no,toolbar=no,status=no"); 
 					  nodewin.window.focus();
@@ -77,9 +76,6 @@
 							return false
 						}
 						else {
-							/*$("#resultstable_wrapper").hide();
-							$("#resultstable").hide();
-							$("#results").hide();*/
 							$("#loading").show();
 							document.getElementById("Search").disabled=true;
 							document.getElementById("attribute").disabled=true;
@@ -96,9 +92,6 @@
 									document.getElementById("attribute").disabled=false;
 									document.getElementById("value").disabled=false;
 									$("#loading").hide();
-									/*$("#resultstable_wrapper").show();
-									$("#resultstable").show();
-									$("#results").show();*/
 								}
 							);
 						}
