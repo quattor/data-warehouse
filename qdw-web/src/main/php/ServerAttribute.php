@@ -15,7 +15,7 @@
 				    <form name="Search" class="form-inline">
 				        <input type="text" placeholder="Attribute" name="attribute" id="attribute" onkeydown="if (event.keyCode == 13) getData()" value="<?php echo $_GET["attribute"] ?>"/>
 				        <input type="text" placeholder="Value" name="value" id="value" onkeydown="if (event.keyCode == 13) getData()" value="<?php echo $_GET["value"] ?>"/>
-				        <input class="btn" type="button" id="Search" value="Quattorise" onclick="getData()"/><br><br>
+				        <button class="btn btn-primary" type="button" data-loading-text="Loading..." id="Search" onclick="getData()">Quattorise</button><br><br>
 				    </form>
 				</div>
 
