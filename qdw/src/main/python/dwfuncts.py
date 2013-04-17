@@ -4,6 +4,8 @@ import httplib
 import json
 import subprocess
 import shutil
+import socket
+import sys
 
 def check_output(cmd):
     (o, e) = subprocess.Popen(cmd, stdout=subprocess.PIPE).communicate()
@@ -29,45 +31,49 @@ def bulkindexer(logger, server, jsonlist):
         for profile in chunkedjsonlist[i]:                                  #creates the bulk file line by line, stripping newlines
             logger.debug("dwfuncts.bulkindexer: loop profile %s" % (profile))
             fileoutput.write('{ "index" : { "_id" : "'+profile+'" } }\n')   #adheres to elastic search bulk schema
-            fileinput = open('Profiles/'+profile)
+            fileinput = open('../Profiles/'+profile)
             for line in fileinput:
                 line = line.rstrip('\n')
                 fileoutput.write(line)
             fileoutput.write('\n')
         fileoutput.close()
-        
+
     for f in os.listdir("."):
         if re.search('indexlist\d+\.json', f):                             #executes the bulk operations
             logger.debug("dwfuncts.bulkindexer: submitting bulk file %s" % (f))
             command='curl -s -XPOST %s:%s/%s/%s/_bulk --data-binary @%s >/dev/null' % (ADDRESS, PORT, INDEX, TYPE, f)
             os.system(command)
-            
+
     server.refresh(INDEX)       #updates the index ready for search
-            
+
     for f in os.listdir("."):       #tidy up by removing the indexlist files
         if re.search('indexlist\d+\.json', f):
                 os.remove(f)
 
 def indexinstall(logger, server):             #to be treated as a clean indexer, will eradicate any conflict and must be run on first time use
     logger.debug("dwfuncts.indexinstall: start")
-    shutil.rmtree('./Profiles/.git',ignore_errors=True)
-    indexsettings=json.load(open('indexsettings.json'))
+    shutil.rmtree('../Profiles/.git',ignore_errors=True)
+    indexsettings=json.load(open('../etc/indexsettings.json'))
     logger.debug("dwfuncts.indexinstall: read index settings: " % (indexsettings))
-    server.delete_index_if_exists(INDEX)
-    server.create_index(INDEX,indexsettings)
+    try:
+        server.delete_index_if_exists(INDEX)
+        server.create_index(INDEX,indexsettings)
+    except socket.error:
+        logger.error("Cannot connect to Elasticsearch, check your settings.")
+        sys.exit()
     regex = re.compile(".*\.json$")
-    alljson = [ i for i in os.listdir("Profiles") if regex.match(i) ]   #only matches a1.b2.c3.json not ???.json~
+    alljson = [ i for i in os.listdir("../Profiles") if regex.match(i) ]   #only matches a1.b2.c3.json not ???.json~
     logger.debug("dwfuncts.indexinstall: matched profiles: " % (alljson))
     bulkindexer(logger, server, alljson)
-    os.chdir('Profiles')
+    os.chdir('../Profiles')
     os.system("git init >/dev/null")
     os.system("git add *")
     os.system("git commit -m 'stamp' >/dev/null")
-    os.chdir('..')
-    
+    os.chdir('../python')
+
 def updater(logger, server):
     logger.debug("dwfuncts.updater: start")
-    os.chdir('Profiles')
+    os.chdir('../Profiles')
     os.system("git add *") #adds only modified and new files
     diff = check_output(['git','diff','--name-only','--cached'])  #gets a list of what has changed
     logger.debug("dwfuncts.updater: changed profiles appear to be: %s" % (diff))
@@ -78,27 +84,27 @@ def updater(logger, server):
     dellist = re.findall(regex, dell)
     os.system("git add -u") #adds all files inculding deleted ones
     os.system("git commit -m 'stamp' >/dev/null")
-    os.chdir('..')
+    os.chdir('../python')
     if dellist != False:
         for i in dellist:
             print i
             server.delete(INDEX,TYPE,i)
         server.refresh(INDEX)
-        
+
     if len(difflist)>SINGLEINDEXLIMIT:  #decides whether to use bulk operations
         logger.debug("dwfuncts.updater: using bulk index operations")
         bulkindexer(logger, difflist)
     elif difflist != False:
         logger.debug("dwfuncts.updater: using normal index operations, difflist = %s" % (difflist))
         for i in difflist:
-            openfile = open('./Profiles/'+i)
+            openfile = open('../Profiles/'+i)
             logger.debug("dwfuncts.updater: opened %s" % (i))
             contents = openfile.read()
             s = server.index(contents,INDEX,TYPE,i)
             logger.debug("dwfuncts.updater: indexing result: %s" % (s))
         server.refresh(INDEX)
-    
-    
+
+
 def queryer(logger, jsonquery):
     logger.debug("dwfuncts.queryer: start")
     queryconn = httplib.HTTPConnection("%s:%s" % (ADDRESS, PORT))     #sets up a httpconection for 'curl style' requests
