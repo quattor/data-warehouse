@@ -5,20 +5,23 @@
     <title>Quattor | Data Warehouse</title>
     <meta name="keywords" content="" />
     <meta name="description" content="" />
+    <link rel="stylesheet" type="text/css" href="css/styling.css" />
+    <link rel="stylesheet" type="text/css" href="css/jquery-ui.min.css" />
     <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css" />
     <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap-responsive.min.css" />
-    <link rel="stylesheet" href="bootstrap/css/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="bootstrap/css/pygments.css" />
     <script type="text/javascript" charset="utf-8" src="bootstrap/js/bootstrap.min.js"></script>
-    <script type="text/javascript" charset="utf-8" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
-    <script type="text/javascript" charset="utf-8" src="http://code.jquery.com/ui/1.9.1/jquery-ui.js"></script>
-    <script type="text/javascript" charset="utf-8" src="keylist.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/jquery-ui.min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/jquery.ui.core.min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/keylist.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/jquery.ui.autocomplete.min.js"></script>
     <style type="text/css">
 		body {
 			padding-top: 60px;
 			padding-bottom: 40px;
 		}
   </style>
-  <link rel="publisher" href="https://plus.google.com/106108753304191902209" />
   <link rel="icon" href="images/favicon.ico"/>
 </head>
 <body>
@@ -43,24 +46,3 @@
 	</div>
   </div>
 </div>
-
-<script>
-    $(function() {
-        $('#attribute').dblclick(function() {
-            $( "#attribute" ).autocomplete("search", "");
-        });
-    });
-</script>
-
-<script>
-    $(function() {
-        $('#value').dblclick(function() {
-            $( "#value" ).autocomplete("search", "");
-        });
-    });
-</script>
-
-<div id="main">
-    <div id="main_inner" class="fixed">
-        <div id="primaryContent_columnless">
-            <div id="columnA_columnless">
