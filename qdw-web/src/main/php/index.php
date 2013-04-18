@@ -4,7 +4,7 @@
 <script type="text/javascript" charset="utf-8" src="js/jquery.jqplot.min.js"></script>
 <script type="text/javascript" charset="utf-8" src="js/jqplot.pieRenderer.min.js"></script>
 <script type="text/javascript" charset="utf-8" src="js/jqplot.categoryAxisRenderer.min.js"></script>
-<script src="https://github.com/fryn/html5slider/raw/master/html5slider.js"></script>
+<script type="text/javascript" charset="utf-8" src="js/html5slider.js"></script>
 <div class="container">
 	<div class="row-fluid">
 		<div class="span12">
