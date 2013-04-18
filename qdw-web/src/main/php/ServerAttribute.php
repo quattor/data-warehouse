@@ -2,8 +2,9 @@
     include("header.inc.php");
 ?>
 
-<link rel="stylesheet" type="text/css" href="css/jquery.dataTables.css" />
+
 <script type="text/javascript" charset="utf-8" src="js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" charset="utf-8" src="js/dataTables.bootstrap.js"></script>
 <script type="text/javascript" charset="utf-8" src="js/config.inc.js"></script>
 
 <div class="container">
@@ -22,7 +23,7 @@
 
 				<div class="results" id="results">
 					<div class="loading" id="loading"></div>
-					<table class="display" id="resultstable"></table>
+					<table class="table table-striped table-bordered" id="resultstable"></table>
 				</div>
 
 				<script type="text/javascript">
@@ -45,24 +46,28 @@
 
 					$(document).ready(function() {
 						$('#resultstable').dataTable( {
-						"fnRowCallback": function( nRow, aData, iDisplayIndex ) {
-							text = $('td:eq(0)', nRow).html();
-							if (text.indexOf("<span ") < 0) {
-								$('td:eq(0)', nRow).html("<span class=\"clickable\" onclick=\"node('"+text+"')\">"+text+"</span>");
-							}
-							return nRow;
-						},
-						"bJQueryUI": true,
-						"sPaginationType": "full_numbers",
-							"aaData": [],
-							"aoColumns": [
-								{ "sTitle": "Machine Names" }
-							],
-						"iDisplayLength": 20,
-						"aLengthMenu": [
-							[20, 40, 80, 160, -1], [20, 40, 80, 160, "All"]
-						]
+							"sDom": "<'row'<'span6'l><'span6'f>r>t<'row'<'span6'i><'span6'p>>",
+							"fnRowCallback": function( nRow, aData, iDisplayIndex ) {
+								text = $('td:eq(0)', nRow).html();
+								if (text.indexOf("<span ") < 0) {
+									$('td:eq(0)', nRow).html("<span class=\"clickable\" onclick=\"node('"+text+"')\">"+text+"</span>");
+								}
+								return nRow;
+							},
+							"bJQueryUI": true,
+							"sPaginationType": "bootstrap",
+								"aaData": [],
+								"aoColumns": [
+									{ "sTitle": "Machine Names" }
+								],
+							"iDisplayLength": 20,
+							"aLengthMenu": [
+								[20, 40, 80, 160, -1], [20, 40, 80, 160, "All"]
+							]
 						});
+						$.extend( $.fn.dataTableExt.oStdClasses, {
+							"sWrapper": "dataTables_wrapper form-inline"
+						} );
 						getData();
 					});
 					

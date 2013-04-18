@@ -1,12 +1,10 @@
 <?php
 	include("header.inc.php");
 ?>
-<link rel="stylesheet" type="text/css" href="css/jquery.jqplot.min.css" />
 <script type="text/javascript" charset="utf-8" src="js/jquery.jqplot.min.js"></script>
 <script type="text/javascript" charset="utf-8" src="js/jqplot.pieRenderer.min.js"></script>
 <script type="text/javascript" charset="utf-8" src="js/jqplot.categoryAxisRenderer.min.js"></script>
 <script src="https://github.com/fryn/html5slider/raw/master/html5slider.js"></script>
-
 <div class="container">
 	<div class="row-fluid">
 		<div class="span12">
@@ -25,11 +23,7 @@
 							$( "#attribute" ).autocomplete("search", "");
 						});
 					});
-				
-					function updateSlider() {
-						$( "#slider" ).slider("option", "value", document.getElementById("threshold").value);
-					}
-					
+									
 					function drawPiechart() {
 						var data = document.piedata;
 						document.getElementById("chartdiv").style.backgroundImage = "none";
@@ -101,49 +95,61 @@
 					}
 					
 					function validateDistributionForm() {
-						var x = document.forms["Analyse"]["attribute"].value;
+						var x = $("#attribute").val();
 						if (x == null || x == "") {
-							$("#alertBox").dialog("open");
-							return false 
+							$('#enter').prop("disabled", true);
 						}
 						else {
-							if (x[0] !== "/") {
-								x = "/" + x;
-							}
-							document.forms["Analyse"]["attribute"].value = x;
-							$( "#sliderbox:visible" ).hide().effect("blind");
-							document.getElementById("enter").disabled=true;
-							document.getElementById("attribute").disabled=true;
-							$('#thresholdTable').hide();
-							document.getElementById("chartdiv").innerHTML = "";
-							document.getElementById("chartdiv").style.backgroundImage = "url('images/loadingred.gif')";
-							$.get('DistributionIndex-json.php', {attribute: x},
-								function(response, status, xhr) {
-									if(response.length > 0) {
-										document.piedata = eval(response);
-										$( "#chartdiv" ).show();
-										drawPiechart();
-										//plot1.replot();
-										thresholdTable();
-										document.getElementById("enter").disabled=false;
-										document.getElementById("attribute").disabled=false;
-										$( "#sliderbox" ).show().effect("blind", {'mode' : 'show'});
-										$( "#slider" ).slider( "option", "disabled", false );
-										pathList();
-									} else {
-										document.getElementById("enter").disabled=false;
-										document.getElementById("attribute").disabled=false;
-										document.getElementById("chartdiv").innerHTML = "<p class=\"error\" style=\"text-align: center\">No data found for attribute: "+x+"</p>";
-										document.getElementById("chartdiv").style.backgroundImage = "";
-									}
-								}
-							);			  
+							$('#enter').prop("disabled", false);
 						}
 					}
 					
+					function submitDistributionForm() {
+						var x = $("#attribute").val();
+						
+						if (x[0] !== "/") {
+							x = "/" + x;
+						}
+						
+						document.forms["Analyse"]["attribute"].value = x;
+						document.getElementById("enter").disabled=true;
+						document.getElementById("attribute").disabled=true;
+						$('#thresholdTable').hide();
+						document.getElementById("chartdiv").innerHTML = "";
+						document.getElementById("chartdiv").style.backgroundImage = "url('images/loadingred.gif')";
+						$.get('DistributionIndex-json.php', {attribute: x},
+							function(response, status, xhr) {
+								if(response.length > 0) {
+									document.piedata = eval(response);
+									$( "#chartdiv" ).show();
+									drawPiechart();
+									thresholdTable();
+									document.getElementById("enter").disabled=false;
+									document.getElementById("attribute").disabled=false;
+									$( "#slider" ).show().effect("fade", {'mode' : 'show'});
+									pathList();
+								} else {
+									document.getElementById("enter").disabled=false;
+									document.getElementById("attribute").disabled=false;
+									document.getElementById("chartdiv").innerHTML = "<p class=\"error\" style=\"text-align: center\">No data found for attribute: "+x+"</p>";
+									document.getElementById("chartdiv").style.backgroundImage = "";
+								}
+							}
+						);
+					}
+					
 					$(document).ready(function() {
+						$("#attribute").tooltip();
+						$("#attribute").keyup(function() {
+							validateDistributionForm();
+						});
+						$("#attribute").change(function() {
+							validateDistributionForm();
+						});
+						validateDistributionForm();
+						$("#enter").click(submitDistributionForm);
 						$( "#chartdiv" ).hide();
-						$( "#sliderbox" ).hide();
+						$( "#slider" ).hide();
 						$( '#thresholdTable' ).hide();
 						pathList();
 						$('#chartdiv').bind('jqplotDataClick',
@@ -156,13 +162,13 @@
 									window.location = "ServerAttribute.php?attribute="+x+"&value="+data[0];
 								}
 								else {
-									$("#thresholdTable").effect("blind", {'mode' : 'toggle'});
+									$("#thresholdTable").effect("fade", {'mode' : 'toggle'});
 								}
 							}
 						);
 						$('#chartdiv').bind('jqplotDataMouseOver',
 							function (ev, seriesIndex, pointIndex, data) {
-								$("#datainfotext").html("<strong>" + data[0] + "</strong>&nbsp;:&nbsp;" + data[1] + " profiles");
+								$("#datainfotext").html("<strong>" + data[0] + "</strong><br />" + data[1] + " profiles");
 								$("#datainfo").css("left", ev.pageX + 8 + "px");
 								$("#datainfo").css("top",  ev.pageY -8 + "px");
 							}
@@ -177,9 +183,6 @@
 									$("#datainfo").css("visibility","hidden");
 							}
 						);
-					});
-					
-					$(function () {
 						$("#slider").change (
 							function() {
 								document.piethreshold = $("#slider").val();
@@ -188,20 +191,18 @@
 								thresholdTable();
 							}
 						);
-						$("#alertBox").dialog({ autoOpen: false });
 				   });
 				</script>
 				
 				<div class="row">
 					<form name="Analyse" class="form-inline">
-						<input type="text" placeholder="Attribute" name="attribute" id="attribute" onkeydown="if (event.keyCode == 13) {validateDistributionForm(); return(false)}" value="<?php echo $_GET["attribute"] ?>" />
+						<div class="input-append">
+							<input data-toggle="tooltip" data-placement="bottom" data-animation="tr" title="Tooltip" type="text" placeholder="Attribute" name="attribute" id="attribute" onkeydown="if (event.keyCode == 13) {submitDistributionForm(); return(false)}" value="<?php echo $_GET["attribute"] ?>" />
+							<button class="btn btn-primary" data-loading-text="Loading..." type="button" id="enter">Quattorise</button>
+						</div>
 						<label for="slider">Minimum profile count: <span id="sliderval">0</span></label>
-						<input type="range" id="slider" value="0" />	
-						<button class="btn btn-primary" data-loading-text="Loading..." type="button" id="enter" onclick="validateDistributionForm()">Quattorise</button>
+						<input type="range" id="slider" value="0" />
 					</form>
-					<div id="alertBox">
-						A value is required to be able to analyse
-					</div>				
 				</div>
 				
 				<div id="datainfo" class="tooltip fade right in">
