@@ -14,8 +14,8 @@
 				
 				<div>
 				    <form name="Search" class="form-inline">
-				        <input type="text" placeholder="Attribute" name="attribute" id="attribute" onkeydown="if (event.keyCode == 13) getData()" value="<?php echo $_GET["attribute"] ?>"/>
-				        <input type="text" placeholder="Value" name="value" id="value" onkeydown="if (event.keyCode == 13) getData()" value="<?php echo $_GET["value"] ?>"/>
+				        <input data-toggle="tooltip" data-placement="top" data-animation="true" title="Attribute: A path to a specific value within a server profile, e.g. /hardware/model" type="text" placeholder="Attribute" name="attribute" id="attribute" onkeydown="if (event.keyCode == 13) getData()" value="<?php echo $_GET["attribute"] ?>"/>
+				        <input data-toggle="tooltip" data-placement="top" data-animation="true" title="Value: A specific word, set of numbers or combination of the both which tells the user something about the server, e.g. wn-2007-streamline" type="text" placeholder="Value" name="value" id="value" onkeydown="if (event.keyCode == 13) getData()" value="<?php echo $_GET["value"] ?>"/>
 				        <button class="btn btn-primary" type="button" data-loading-text="Loading..." id="Search" onclick="getData()">Quattorise</button><br><br>
 				    </form>
 				</div>
@@ -45,6 +45,8 @@
 					}
 
 					$(document).ready(function() {
+						$("#attribute").tooltip();
+						$("#value").tooltip();
 						$('#resultstable').dataTable( {
 							"sDom": "<'row'<'span6'l><'span6'f>r>t<'row'<'span6'i><'span6'p>>",
 							"fnRowCallback": function( nRow, aData, iDisplayIndex ) {
