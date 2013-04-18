@@ -76,7 +76,7 @@
 					var extra = "";
 					var x=document.forms["Analyse"]["attribute"].value;
 					if (document.belowthreshold.length > 0) {
-						extra = "<h3 id=\"thresholdtableheader\">Below Threshold</h3><table class=\"belowthreshold\"><tr><th>Value</th><th>Count</th></tr>";
+						extra = "<h3 id=\"thresholdtableheader\">Below Threshold</h3><table class=\"table table-striped table-bordered\"><tr><th>Value</th><th>Count</th></tr>";
 						for (row in document.belowthreshold) {
 							row = document.belowthreshold[row];
 							extra = extra + "<tr><td>";
