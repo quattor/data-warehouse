@@ -197,10 +197,10 @@
 				<div class="row">
 					<form name="Analyse" class="form-inline">
 						<div class="input-append">
-							<input data-toggle="tooltip" data-placement="top" data-animation="true" title="Attribute: A path to a specific value within a server profile." type="text" placeholder="Attribute" name="attribute" id="attribute" onkeydown="if (event.keyCode == 13) {submitDistributionForm(); return(false)}" value="<?php echo $_GET["attribute"] ?>" />
+							<input data-toggle="tooltip" data-placement="top" data-animation="true" title="Path to a value, e.g. /hardware/model" type="text" placeholder="Attribute" name="attribute" id="attribute" onkeydown="if (event.keyCode == 13) {submitDistributionForm(); return(false)}" value="<?php echo $_GET["attribute"] ?>" />
 							<button class="btn btn-primary" data-loading-text="Loading..." type="button" id="enter">Quattorise</button>
 						</div>
-						<label for="slider">Minimum profile count: <span id="sliderval">0</span></label>
+						<label for="slider">Threshold: <span id="sliderval">0</span></label>
 						<input type="range" id="slider" value="0" />
 					</form>
 				</div>
