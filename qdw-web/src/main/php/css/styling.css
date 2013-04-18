@@ -1,14 +1,10 @@
 .jqplot-data-label {
 	color:#FFFFFF;
 }
-
-.jqplot-series-shadowCanvas {
-	background-color: rgb(238, 238, 238);
-}
 div#chartdiv {
 	background-position:center center;
 	background-repeat:no-repeat;
-	height:500px;
+	height:690px;
 }
 div#datainfo {
 	position: absolute;
@@ -53,14 +49,6 @@ div#slider {
 	padding-right: 20px;
 	position: absolute;
 	z-index: 100;
-}
-span.clickable, a {
-	cursor: pointer;
-	text-decoration: none;
-}
-span.clickable:hover, a:hover {
-	text-decoration: underline;
-	color: #cc0000;
 }
 #sliderval {
 	width: 2em;
