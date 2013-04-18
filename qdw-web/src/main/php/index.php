@@ -191,7 +191,7 @@
 								thresholdTable();
 							}
 						);
-				   });
+				   });R
 				</script>
 				
 				<div class="row">
