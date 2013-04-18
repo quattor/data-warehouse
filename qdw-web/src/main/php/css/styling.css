@@ -12,19 +12,6 @@ div#datainfo {
 	visibility: hidden;
 	padding: 2px;
 }
-
-table.belowthreshold {
-	height: 100%;
-	width: 100%;
-	padding: 2px;
-	border-collapse:collapse;
-	text-align: center;
-}
-table.belowthreshold td, table.belowthreshold th {
-	border: 1px solid black;
-	background-color: #ffffff;
-	padding: 2px;		
-}
 .ui-widget-content {
 	border: 1px solid
 }
@@ -231,4 +218,3 @@ div.DTFC_LeftBodyWrapper tbody tr:first-child td {
 div.DTFC_LeftFootWrapper table {
 	border-top: none;
 }
-
