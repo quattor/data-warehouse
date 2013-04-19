@@ -4,8 +4,8 @@
 
 
 <script type="text/javascript" charset="utf-8" src="js/jquery.dataTables.min.js"></script>
-<script type="text/javascript" charset="utf-8" src="js/dataTables.bootstrap.js"></script>
-<script type="text/javascript" charset="utf-8" src="js/config.inc.js"></script>
+<script type="text/javascript" charset="utf-8" src="js/dataTables.bootstrap.min.js"></script>
+<script type="text/javascript" charset="utf-8" src="js/config.inc.min.js"></script>
 
 <div class="container">
 	<div class="row-fluid">
@@ -13,7 +13,7 @@
 			<form name="Search" class="form-inline">
 				<div class="input-append">
 					<input class="input-xxlarge" data-toggle="tooltip" data-placement="top" data-animation="true" title="Path to a value, e.g. /hardware/model" type="text" placeholder="Attribute" name="attribute" id="attribute" onkeydown="if (event.keyCode == 13) getData()" value="<?php echo $_GET["attribute"] ?>"/>
-					<input data-toggle="tooltip" data-placement="top" data-animation="true" title="A value of an attribute, e.g. wn-2007-streamline" type="text" placeholder="Value" name="value" id="value" onkeydown="if (event.keyCode == 13) getData()" value="<?php echo $_GET["value"] ?>"/>
+					<input class="input-xlarge" data-toggle="tooltip" data-placement="top" data-animation="true" title="A value of an attribute, e.g. wn-2007-streamline" type="text" placeholder="Value" name="value" id="value" onkeydown="if (event.keyCode == 13) getData()" value="<?php echo $_GET["value"] ?>"/>
 					<button class="btn btn-primary" type="button" data-loading-text="Loading..." id="Search" onclick="getData()">Quattorise</button>
 				</div>
 			</form>
@@ -45,15 +45,14 @@
 					$("#attribute").tooltip();
 					$("#value").tooltip();
 					$('#resultstable').dataTable( {
-						"sDom": "<'row'<'span6'l><'span6'f>r>t<'row'<'span6'i><'span6'p>>",
+						"sDom": "<'row-fluid'<'span6'l><'span6'f>r>t<'row-fluid'<'span6'i><'span6'p>>",
 						"fnRowCallback": function( nRow, aData, iDisplayIndex ) {
 							text = $('td:eq(0)', nRow).html();
-							if (text.indexOf("<span ") < 0) {
-								$('td:eq(0)', nRow).html("<a href='#' onclick=\"node('"+text+"')\">"+text+"</a>");
+							if (text.indexOf("<a ") < 0) {
+								$('td:eq(0)', nRow).html("<a class='clickable' onclick=\"node('"+text+"')\">"+text+"</a>");
 							}
 							return nRow;
 						},
-						"bJQueryUI": true,
 						"sPaginationType": "bootstrap",
 							"aaData": [],
 							"aoColumns": [
