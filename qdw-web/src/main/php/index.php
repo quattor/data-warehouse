@@ -4,7 +4,7 @@
 <script type="text/javascript" charset="utf-8" src="js/jquery.jqplot.min.js"></script>
 <script type="text/javascript" charset="utf-8" src="js/jqplot.pieRenderer.min.js"></script>
 <script type="text/javascript" charset="utf-8" src="js/jqplot.categoryAxisRenderer.min.js"></script>
-<script type="text/javascript" charset="utf-8" src="js/html5slider.js"></script>
+<script type="text/javascript" charset="utf-8" src="js/html5slider.min.js"></script>
 <div class="container">
 	<div class="row-fluid">
 		<div class="span12">
@@ -190,14 +190,14 @@
 							thresholdTable();
 						}
 					);
-			   });R
+			   });
 			</script>
 				
 			<div class="row-fluid">
 				<form name="Analyse" class="form-inline">
 					<div class="input-append">
 						<input class="input-xxlarge"  data-toggle="tooltip" data-placement="top" data-animation="true" title="Path to a value, e.g. /hardware/model" type="text" placeholder="Attribute" name="attribute" id="attribute" onkeydown="if (event.keyCode == 13) {submitDistributionForm(); return(false)}" value="<?php echo $_GET["attribute"] ?>" />
-						<button class="btn btn-primary" data-loading-text="Loading..." type="button" id="enter">Quattorise</button>
+						<button class="btn btn-primary" type="button" id="enter">Quattorise</button>
 					</div>
 					<label for="slider">Threshold: <span id="sliderval">0</span></label>
 					<input type="range" id="slider" value="0" />
