@@ -13,16 +13,19 @@
 				function pathList() { 
 					$( "#attribute" ).autocomplete ({
 						source: quattorKeylist,
-						minLength: 0
+						minLength: 0,
+						close: function( event, ui ) {
+							validateDistributionForm();
+						}
 					});
 				}
-	
+				
 				$(function() {
 					$('#attribute').dblclick(function() {
 						$( "#attribute" ).autocomplete("search", "");
 					});
 				});
-								
+				
 				function drawPiechart() {
 					var data = document.piedata;
 					document.getElementById("chartdiv").style.backgroundImage = "none";
@@ -109,7 +112,6 @@
 					if (x[0] !== "/") {
 						x = "/" + x;
 					}
-					
 					document.forms["Analyse"]["attribute"].value = x;
 					document.getElementById("enter").disabled=true;
 					document.getElementById("attribute").disabled=true;
