@@ -79,6 +79,7 @@
 						return false
 					}
 					else {
+						$("#resultstable_wrapper").hide();
 						$("#loading").show();
 						document.getElementById("Search").disabled=true;
 						document.getElementById("attribute").disabled=true;
@@ -95,6 +96,7 @@
 								document.getElementById("attribute").disabled=false;
 								document.getElementById("value").disabled=false;
 								$("#loading").hide();
+								$("#resultstable_wrapper").show();
 							}
 						);
 					}
