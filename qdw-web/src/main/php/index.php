@@ -116,13 +116,14 @@
 					document.getElementById("enter").disabled=true;
 					document.getElementById("attribute").disabled=true;
 					$('#thresholdTable').hide();
-					document.getElementById("chartdiv").innerHTML = "";
-					document.getElementById("chartdiv").style.backgroundImage = "url('images/loadingred.gif')";
+					$("#chartdiv").hide();
+					$("#loading").show();
 					$.get('api-json-distribution.php', {attribute: x},
 						function(response, status, xhr) {
 							if(response.length > 0) {
 								document.piedata = eval(response);
-								$( "#chartdiv" ).show();
+								$("#chartdiv").show();
+								$("#loading").hide();
 								drawPiechart();
 								thresholdTable();
 								document.getElementById("enter").disabled=false;
@@ -211,6 +212,7 @@
 				<div id="datainfotext" class="tooltip-inner"></div>
 			</div>
 			<div class="row">
+				<div class="loading" id="loading"></div>
 				<div id="chartdiv" class="span9"></div>
 				<div id="thresholdTable" class="span3" style="display:none"></div>
 			</div>
