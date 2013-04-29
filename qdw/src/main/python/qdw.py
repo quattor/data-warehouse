@@ -23,7 +23,7 @@ log_handler.setFormatter(logging.Formatter("%(levelname)8s: %(message)s"))
 logger.addHandler(log_handler)
 
 config = ConfigParser.ConfigParser()
-config.read('../etc/dw.conf')
+config.read('/etc/dw.conf')
 
 logger.debug("qdw: read config %s" % (config))
 
