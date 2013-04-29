@@ -1,9 +1,8 @@
 <?php
 	include("header.inc.php");
 ?>
-<script type="text/javascript" charset="utf-8" src="js/jquery.dataTables.min.js"></script>
-<script type="text/javascript" charset="utf-8" src="js/dataTables.bootstrap.min.js"></script>
-<script type="text/javascript" charset="utf-8" src="js/config.inc.min.js"></script>
+<script type="text/javascript" charset="utf-8" src="js/external/jquery.dataTables.min.js"></script>
+<script type="text/javascript" charset="utf-8" src="js/external/dataTables.bootstrap.min.js"></script>
 <div class="container">
 	<div class="row-fluid">
 		<div class="span12">

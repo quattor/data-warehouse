@@ -5,17 +5,16 @@
 	<title>Quattor | Data Warehouse</title>
 	<meta name="keywords" content="" />
 	<meta name="description" content="" />
-	<link rel="stylesheet" type="text/css" href="css/jquery-ui.min.css" />
-	<link rel="stylesheet" type="text/css" href="css/jquery.jqplot.min.css" />
+	<link rel="stylesheet" type="text/css" href="css/external/jquery-ui.min.css" />
+	<link rel="stylesheet" type="text/css" href="css/external/jquery.jqplot.min.css" />
 	<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css" />
 	<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap-responsive.min.css" />
 	<link rel="stylesheet" type="text/css" href="css/styling.min.css" />
-	<script type="text/javascript" charset="utf-8" src="js/jquery-1.9.1.min.js"></script>
-	<script type="text/javascript" charset="utf-8" src="js/jquery-ui.min.js"></script>
-	<script type="text/javascript" charset="utf-8" src="js/keylist.min.js"></script>
-	<script type="text/javascript" charset="utf-8" src="js/jquery.ui.autocomplete.min.js"></script>
-	<script type="text/javascript" charset="utf-8" src="bootstrap/js/bootstrap.min.js"></script>
+	<script type="text/javascript" charset="utf-8" src="js/external/jquery-1.9.1.min.js"></script>
+	<script type="text/javascript" charset="utf-8" src="js/external/jquery-ui.min.js"></script>
+	<script type="text/javascript" charset="utf-8" src="js/external/jquery.ui.autocomplete.min.js"></script>
 	<script type="text/javascript" charset="utf-8" src="bootstrap/js/bootstrap-tooltip.min.js"></script>
+	<script type="text/javascript" charset="utf-8" src="js/keylist.min.js"></script>
 	<style type="text/css">
 		@import url(http://fonts.googleapis.com/css?family=Lato:400);
 		body {

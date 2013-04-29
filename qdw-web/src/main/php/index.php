@@ -1,10 +1,10 @@
 <?php
 	include("header.inc.php");
 ?>
-<script type="text/javascript" charset="utf-8" src="js/jquery.jqplot.min.js"></script>
-<script type="text/javascript" charset="utf-8" src="js/jqplot.pieRenderer.min.js"></script>
-<script type="text/javascript" charset="utf-8" src="js/jqplot.categoryAxisRenderer.min.js"></script>
-<script type="text/javascript" charset="utf-8" src="js/html5slider.min.js"></script>
+<script type="text/javascript" charset="utf-8" src="js/external/jquery.jqplot.min.js"></script>
+<script type="text/javascript" charset="utf-8" src="js/external/jqplot.pieRenderer.min.js"></script>
+<script type="text/javascript" charset="utf-8" src="js/external/jqplot.categoryAxisRenderer.min.js"></script>
+<script type="text/javascript" charset="utf-8" src="js/external/html5slider.min.js"></script>
 <div class="container">
 	<div class="row-fluid">
 		<div class="span12">
