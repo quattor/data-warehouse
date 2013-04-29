@@ -58,7 +58,7 @@
 						$("#attribute").prop("disabled", true);
 						$("#value").prop("disabled", true);
 						$.get(
-							'ServerAttribute-json.php',
+							'api-json-attribute.php',
 							{ attribute: document.forms["Search"]["attribute"].value, value: document.forms["Search"]["value"].value },
 							function(response, status, xhr) {
 								var data = eval(response);

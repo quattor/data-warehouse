@@ -118,7 +118,7 @@
 					$('#thresholdTable').hide();
 					document.getElementById("chartdiv").innerHTML = "";
 					document.getElementById("chartdiv").style.backgroundImage = "url('images/loadingred.gif')";
-					$.get('DistributionIndex-json.php', {attribute: x},
+					$.get('api-json-distribution.php', {attribute: x},
 						function(response, status, xhr) {
 							if(response.length > 0) {
 								document.piedata = eval(response);
