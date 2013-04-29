@@ -1,12 +1,9 @@
 <?php
-    include("header.inc.php");
+	include("header.inc.php");
 ?>
-
-
 <script type="text/javascript" charset="utf-8" src="js/jquery.dataTables.min.js"></script>
 <script type="text/javascript" charset="utf-8" src="js/dataTables.bootstrap.min.js"></script>
 <script type="text/javascript" charset="utf-8" src="js/config.inc.min.js"></script>
-
 <div class="container">
 	<div class="row-fluid">
 		<div class="span12">
@@ -17,12 +14,10 @@
 					<button class="btn btn-primary" type="button" data-loading-text="Loading..." id="search" onclick="getData()">Quattorise</button>
 				</div>
 			</form>
-
 			<div class="results" id="results">
 				<div class="loading" id="loading"></div>
 				<table class="table table-striped table-bordered" id="resultstable"></table>
 			</div>
-
 			<script type="text/javascript">
 				$(function() {
 					$( "#attribute" ).autocomplete ({
@@ -33,14 +28,12 @@
 						$( "#attribute" ).autocomplete("search", "");
 					});
 				});
-
 				//Pops open the info box for a specific node
 				var nodewin = null;
 				function node(n) {
 				  nodewin = window.open(INFO_URL+n, "node", "width=640,height=480,left=128,top=128,resizable=yes,scrollbars=yes,directories=no,titlebar=no,toolbar=no,status=no");
 				  nodewin.window.focus();
 				}
-
 				function validateData() {
 					var x = document.forms["Search"]["attribute"].value;
 					var y = document.forms["Search"]["value"].value;
@@ -53,7 +46,6 @@
 						return true;
 					}
 				}
-
 				function getData() {
 					if (validateData()) {
 						var x = $("#attribute").val();
@@ -82,7 +74,6 @@
 						);
 					}
 				}
-
 				$(document).ready(function() {
 					$("#attribute").tooltip();
 					$("#value").tooltip();
@@ -128,7 +119,6 @@
 		</div>
 	</div>
 </div>
-
 <?php
-    include("footer.inc.php");
+	include("footer.inc.php");
 ?>
