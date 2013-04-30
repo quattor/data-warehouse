@@ -1,3 +1,3 @@
 <?php
-    $CONFIG = parse_ini_file("../etc/qdw-web.conf");
+    $CONFIG = parse_ini_file("/etc/quattor-datawarehouse/qdw-web.conf");
 ?>

@@ -53,7 +53,7 @@ def bulkindexer(logger, server, jsonlist):
 def indexinstall(logger, server):             #to be treated as a clean indexer, will eradicate any conflict and must be run on first time use
     logger.debug("dwfuncts.indexinstall: start")
     shutil.rmtree('../Profiles/.git',ignore_errors=True)
-    indexsettings=json.load(open('../etc/indexsettings.json'))
+    indexsettings=json.load(open('/etc/quattor-datawarehouse/indexsettings.json'))
     logger.debug("dwfuncts.indexinstall: read index settings: " % (indexsettings))
     try:
         server.delete_index_if_exists(INDEX)
