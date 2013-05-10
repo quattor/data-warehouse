@@ -1,9 +1,6 @@
-            </div>
-        </div>
-        <br class="clear" />
-    </div>
-</div>
-
-<div id="footer" class="fixed">Copyright &copy; 2012 quattor.org. Design by <a href="http://www.freecsstemplates.org">FCT</a> + <a href="http://www.nodethirtythree.com/">NodeThirtyThree Design</a>.</div>
-</body>
+		<hr />
+		<div class="footer container" >
+			<p class="muted credit">Copyright &copy; 2011-2013 quattor.org</p>
+		</div>
+	</body>
 </html>

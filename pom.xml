@@ -27,6 +27,7 @@
   <modules>
     <module>qdw</module>
     <module>qdw-web</module>
+    <module>rpm</module>
   </modules>
 
   <organization>

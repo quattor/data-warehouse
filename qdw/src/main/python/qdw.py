@@ -23,30 +23,30 @@ log_handler.setFormatter(logging.Formatter("%(levelname)8s: %(message)s"))
 logger.addHandler(log_handler)
 
 config = ConfigParser.ConfigParser()
-config.read('dw.conf')
+config.read('/etc/quattor-datawarehouse/dw.conf')
 
 logger.debug("qdw: read config %s" % (config))
 
-dwfuncts.BATCHSIZE = config.getint('dw', 'batchsize')                 #size of each bulk indexing operation (no.profiles)
-dwfuncts.SINGLEINDEXLIMIT = config.getint('dw', 'singleindexlimit')   #number of profiles before bulk indexing takes over from single
+dwfuncts.BATCHSIZE = config.getint('dw', 'batchsize') #size of each bulk indexing operation (no.profiles)
+dwfuncts.SINGLEINDEXLIMIT = config.getint('dw', 'singleindexlimit') #number of profiles before bulk indexing takes over from single
 dwfuncts.INDEX = config.get('dw', 'index')
 dwfuncts.TYPE = config.get('dw', 'type')
-dwfuncts.ADDRESS = config.get('dw', 'address')                     #address of elastic search server
+dwfuncts.ADDRESS = config.get('dw', 'address') #address of elastic search server
 dwfuncts.PORT = config.get('dw', 'port')
 
-server = pyes.es.ES(server="%s:%s" % (dwfuncts.ADDRESS, dwfuncts.PORT))   #initialises the conection to elastic search
+server = pyes.es.ES(server="%s:%s" % (dwfuncts.ADDRESS, dwfuncts.PORT)) #initialises the conection to elastic search
 
 if args.debug:
     logger.setLevel(logging.DEBUG)
 
 if not(args.noindex):
-    if not os.path.isdir('Profiles/.git'):
+    if not os.path.isdir('../Profiles/.git'):
         logger.debug("qdw: Initialising index and populating git repo")
         dwfuncts.indexinstall(logger, server) #inits index and populates
     else:
         logger.debug("qdw: Existing index found, updating")
         dwfuncts.updater(logger, server) #updates the index
-        
+
 if (args.distributionofx is not(None)):
     logger.debug("qdw: Requested distribution")
     path = args.distributionofx[0].strip('/').replace("/",".")
@@ -69,7 +69,7 @@ if (args.distributionofx is not(None)):
     }
     raw=dwfuncts.queryer(logger, jsonquery)
     logger.debug("qdw: query returned %s" % (raw))
-    mixedlist = raw['facets']['tag']['terms']   #navigate to the terms feild within the results
+    mixedlist = raw['facets']['tag']['terms'] #navigate to the terms feild within the results
     array=[]
     for i in range(0,len(mixedlist)):
         temp=[mixedlist[i]["term"],int(mixedlist[i]["count"])]  #organises
@@ -82,19 +82,19 @@ if (args.distributionofx is not(None)):
             print i
     else:
         print (json.dumps(array))
-        
+
 elif (args.frequencyofx is not(None)):
     logger.debug("qdw: Frequency of x set")
     path = args.frequencyofx[0].strip('/').replace("/",".")
     value = args.frequencyofx[1]
     count = dwfuncts.indexcount(logger)
     jsonquery={
-                "fields":[""],
-                "size":count,
-                "query" : {
-                    "term" : {path : value}
-                        }
-            }
+        "fields":[""],
+        "size":count,
+        "query" : {
+            "term" : {path : value}
+        }
+    }
     raw=dwfuncts.queryer(logger, jsonquery)
     machines=[ i["_id"].rstrip('.json') for i in raw["hits"]["hits"] ] #gets all the ids of the resulsts and strip trailing .json
     if args.prettyprint:
@@ -105,5 +105,3 @@ elif (args.frequencyofx is not(None)):
             print i
     else:
         print (json.dumps(machines))
-
-

@@ -1,75 +1,46 @@
 <!DOCTYPE html>
-<!--
-
-    Nonzero1.0 by nodethirtythree design
-    http://www.nodethirtythree.com
-    missing in a maze
-
--->
 <html>
 <head>
-    <meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />
-    <title>Machine Profiles Search Directory</title>
-    <meta name="keywords" content="" />
-    <meta name="description" content="" />
-    <link rel="stylesheet" type="text/css" title="Red" href="css/style_quattor.css" />
-    <link rel="stylesheet" type="text/css" href="css/style.css" />
-    <link rel="stylesheet" href="http://code.jquery.com/ui/1.9.1/themes/base/jquery-ui.css" />
-    <script type="text/javascript" charset="utf-8" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
-    <script type="text/javascript" charset="utf-8" src="http://code.jquery.com/ui/1.9.1/jquery-ui.js"></script>
-    <script type="text/javascript" charset="utf-8" src="keylist.js"></script>
+	<meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />
+	<title>Quattor | Data Warehouse</title>
+	<meta name="keywords" content="" />
+	<meta name="description" content="" />
+	<link rel="stylesheet" type="text/css" href="css/external/jquery-ui.min.css" />
+	<link rel="stylesheet" type="text/css" href="css/external/jquery.jqplot.min.css" />
+	<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css" />
+	<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap-responsive.min.css" />
+	<link rel="stylesheet" type="text/css" href="css/styling.min.css" />
+	<script type="text/javascript" charset="utf-8" src="js/external/jquery-1.9.1.min.js"></script>
+	<script type="text/javascript" charset="utf-8" src="js/external/jquery-ui.min.js"></script>
+	<script type="text/javascript" charset="utf-8" src="js/external/jquery.ui.autocomplete.min.js"></script>
+	<script type="text/javascript" charset="utf-8" src="bootstrap/js/bootstrap-tooltip.min.js"></script>
+	<script type="text/javascript" charset="utf-8" src="js/keylist.min.js"></script>
+	<style type="text/css">
+		@import url(http://fonts.googleapis.com/css?family=Lato:400);
+		body {
+			font-family: 'Lato', 'Helvetica', sans-serif;
+			padding-top: 60px;
+			padding-bottom: 40px;
+		}
+	</style>
+	<link rel="icon" href="images/favicon.ico"/>
 </head>
 <body>
-<div id="header">
-    <div id="header_inner" class="fixed">
-        <div id="logo">
-            <a href="http://quattor.sourceforge.net/"><img src="images/quattorlogo.png" alt="quattor" title="Quattor logo"/></a>
-        </div>
-<?php
-    $page = (explode("/", $_SERVER['REQUEST_URI']));
-    $page = (explode("?", $page[2]));
-    $page = $page[0];
-    if($page == "") {
-        $page = ".";
-    }
-    $tabs = Array(
-        "." => "Distribution",
-        "ServerAttribute.php" => "Server Attribute"
-    );
-?>
-        <div id="menu">
-            <ul>    
-                <?php
-                    foreach ($tabs as $u => $t) {
-                        $class = "";
-                        if ($page == $u) {
-                            $class = "active";
-                        }
-                        echo "<li><a class=\"$class\" href=\"$u\">$t</a></li>\n";
-                    }
-                ?>
-            </ul>
-        </div>
-    </div>
-</div>
-
-<script>
-    $(function() {
-        $('#attribute').dblclick(function() {
-            $( "#attribute" ).autocomplete("search", "");
-        });
-    });
-</script>
-
-<script>
-    $(function() {
-        $('#value').dblclick(function() {
-            $( "#value" ).autocomplete("search", "");
-        });
-    });
-</script>
-
-<div id="main">
-    <div id="main_inner" class="fixed">
-        <div id="primaryContent_columnless">
-            <div id="columnA_columnless">
+	<div class="navbar navbar-inverse navbar-fixed-top">
+		<div class="navbar-inner">
+			<div class="container">
+				<a class="brand" href="http://quattor.org/index.html"><img src="images/quattor_logo_navbar.png" alt="quattor logo"/></a>
+				<div class="nav-collapse collapse">
+					<ul class="nav">
+						<?php
+							$currentFile = $_SERVER["PHP_SELF"];
+							$parts = Explode('/', $currentFile);
+							$page = $parts[count($parts) - 1];
+						?>
+						<li<?php if ($page == "index.php") { echo ' class="active"'; } ?>><a href="index.php">Distribution</a></li>
+						<li<?php if ($page == "ServerAttribute.php") { echo ' class="active"'; } ?>><a href="ServerAttribute.php">Server Attribute</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
